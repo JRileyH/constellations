@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=3 uid="uid://bylkt2ecnd2ir"]
+
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_lcllm"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_lcllm")
+
+[node name="View" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsPanel" type="Panel" parent="View"]
+layout_mode = 1
+offset_right = 256.0
+offset_bottom = 512.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="View/SettingsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SizeLabel" type="Label" parent="View/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Size:"
+
+[node name="SizeSlider" type="HSlider" parent="View/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+min_value = 1000.0
+max_value = 6000.0
+value = 4000.0
+
+[node name="SpaceLabel" type="Label" parent="View/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Space:"
+
+[node name="SpaceSlider" type="HSlider" parent="View/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+min_value = 100.0
+max_value = 1000.0
+value = 500.0
+
+[node name="DensityLabel" type="Label" parent="View/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Density"
+
+[node name="DensiitySlider" type="HSlider" parent="View/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+page = 0.1
+
+[node name="ConnectivityLabel" type="Label" parent="View/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Connectivity"
+
+[node name="ConnectivitySlider" type="HSlider" parent="View/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.25
+
+[node name="RandomnessLabel" type="Label" parent="View/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Randomness"
+
+[node name="RandomnessSlider" type="HSlider" parent="View/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Button" type="Button" parent="View/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Rebuild"
+
+[connection signal="value_changed" from="View/SettingsPanel/VBoxContainer/SizeSlider" to="." method="update_constellation_size"]
+[connection signal="value_changed" from="View/SettingsPanel/VBoxContainer/SpaceSlider" to="." method="update_constellation_space"]
+[connection signal="value_changed" from="View/SettingsPanel/VBoxContainer/DensiitySlider" to="." method="update_constellation_density"]
+[connection signal="value_changed" from="View/SettingsPanel/VBoxContainer/ConnectivitySlider" to="." method="update_constellation_connectivity"]
+[connection signal="value_changed" from="View/SettingsPanel/VBoxContainer/RandomnessSlider" to="." method="update_constellation_randomness"]
+[connection signal="pressed" from="View/SettingsPanel/VBoxContainer/Button" to="." method="rebuild_constellation"]

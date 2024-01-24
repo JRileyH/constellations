@@ -1,0 +1,2 @@
+# Constellations
+A small godot tool that generates points and lines using BowyerWatson's triangulation algorithm to create complete, but non-overlapping paths between randomized points and Primm's shortest path to favor structures that use nearest neighbor paths rather than random pathways. Together it generates somewhat constellation-looking structures.

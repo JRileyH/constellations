@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmf85hhjnlkxi"]
+
+[ext_resource type="PackedScene" uid="uid://c43wf0n1q42nt" path="res://ui/controller.tscn" id="2_38pfg"]
+[ext_resource type="Script" path="res://constellation.gd" id="2_b10hd"]
+[ext_resource type="PackedScene" uid="uid://bylkt2ecnd2ir" path="res://ui/hud.tscn" id="3_2j4ap"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Constellation" type="Node2D" parent="."]
+script = ExtResource("2_b10hd")
+
+[node name="Controller" parent="." instance=ExtResource("2_38pfg")]
+
+[node name="HUD" parent="." node_paths=PackedStringArray("constellation") instance=ExtResource("3_2j4ap")]
+constellation = NodePath("../Constellation")
